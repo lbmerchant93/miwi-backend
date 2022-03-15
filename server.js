@@ -1,24 +1,35 @@
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { schema, resolver } = require('./api/schema');
-const envs = require('./envs');
+const express = require('express')
+const { ApolloServer, gql } = require('apollo-server-express')
 
-const app = express();
-app.use(express.json());
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
 
-app.use(
-    envs.graphqlPath,
-    graphqlHTTP((request, response, graphQLParams) => ({
-        schema,
-        rootValue: resolver,
-        graphiql: true,
-        context: {
-            request,
-            response,
-        },
-    }))
-);
+const resolvers = {
+  Query: {
+    hello: () => {
+      return "Hello World";
+    },
+  },
+};
 
-app.listen(envs.port, () => {
-    console.log(`Server is running at http://localhost:${envs.port} ${envs.graphqlPath}`);
-});
+async function startServer() {
+  const app = express()
+  const apolloServer = new ApolloServer({
+    typeDefs: typeDefs,
+    resolvers: resolvers,
+  });
+
+  await apolloServer.start();
+
+  apolloServer.applyMiddleware({ app: app, path: '/dev' });
+
+  app.use((req, res) => {
+    res.send("Hello from express apollo server");
+  });
+
+  app.listen(4000, () => console.log("Server is running on port 4000"));
+}
+startServer();
