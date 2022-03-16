@@ -1,0 +1,23 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model journalentries {
+  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int     @map("__v")
+  date             String
+  exercise         Int
+  garlandPose      Int
+  kegels           Int
+  prenatalVitamins Boolean
+  probiotics       Boolean
+  proteinIntake    Int
+  userId           String
+  waterIntake      Int
+}
