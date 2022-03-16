@@ -1,8 +1,10 @@
+require('dotenv').config()
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
 const mongoose = require('mongoose');
+const DATABASE_URL = process.env.DATABASE_URL;
 
 async function startServer() {
   const app = express()
@@ -19,7 +21,7 @@ async function startServer() {
     res.send("Hello from express apollo server");
   });
 
-  mongoose.connect('mongodb+srv://miwiadmin:miwiadmin@cluster0.i54ws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true }, err => {
+  mongoose.connect(DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true }, err => {
     if (err) {
       console.log("Connection to Database failed.");
     }
