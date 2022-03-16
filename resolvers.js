@@ -2,9 +2,6 @@ const JournalEntry = require('./models/JournalEntry.model');
 
 const resolvers = {
     Query: {
-      hello: () => {
-        return "Hello World";
-      },
       getAllJournalEntries: async () => {
         return await JournalEntry.find();
       },
@@ -18,8 +15,28 @@ const resolvers = {
 
     Mutation: {
       createJournalEntry: async (parent, args, context, info) => {
-        const { date } = args.journalEntry;
-        const journalEntry = new JournalEntry({ date });
+        const { 
+          userId, 
+          date, 
+          waterIntake, 
+          proteinIntake, 
+          exercise, 
+          kegels, 
+          garlandPose, 
+          prenatalVitamins, 
+          probiotics  
+        } = args.journalEntry;
+        const journalEntry = new JournalEntry({ 
+          userId, 
+          date, 
+          waterIntake, 
+          proteinIntake, 
+          exercise, 
+          kegels, 
+          garlandPose, 
+          prenatalVitamins, 
+          probiotics
+        });
         await journalEntry.save();
         return journalEntry;
       },
@@ -30,7 +47,16 @@ const resolvers = {
       },
       updateJournalEntry: async (parent, args, context, info) => {
         const { id } = args;
-        const { date } = args.journalEntry;
+        const { 
+          date, 
+          waterIntake, 
+          proteinIntake, 
+          exercise, 
+          kegels, 
+          garlandPose, 
+          prenatalVitamins, 
+          probiotics  
+        } = args.journalEntry;
         // const updates = {}
         // if (title !== undefined) {
         //   updates.title = title
@@ -38,7 +64,16 @@ const resolvers = {
         const journalEntry = await JournalEntry.findByIdAndUpdate(
           id, 
           // updates
-          {date}, 
+          {
+            date, 
+            waterIntake, 
+            proteinIntake, 
+            exercise, 
+            kegels, 
+            garlandPose, 
+            prenatalVitamins, 
+            probiotics
+          }, 
           {new: true}
         );
         return journalEntry;
