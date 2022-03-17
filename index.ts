@@ -1,6 +1,9 @@
-const { PrismaClient } = require('@prisma/client')
+import "reflect-metadata";
 
-const prisma = new PrismaClient()
+import { PrismaClient } from "./node_modules/.prisma/client/index";
+// need to update this to point to a generated path
+
+const prisma = new PrismaClient();
 
 async function main() {
   // Connect the client
