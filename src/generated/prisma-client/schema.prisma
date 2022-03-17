@@ -1,0 +1,25 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  output  = "../src/generated/prisma-client"
+}
+
+
+model journalentries {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  date             String
+  exercise         Int
+  garlandPose      Int
+  kegels           Int
+  prenatalVitamins Boolean
+  probiotics       Boolean
+  proteinIntake    Int
+  userId           String
+  waterIntake      Int
+}
