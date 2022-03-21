@@ -13,10 +13,10 @@ type UnwrapTuple<Tuple extends readonly unknown[]> = {
 
 
 /**
- * Model journalentries
+ * Model JournalEntry
  * 
  */
-export type journalentries = {
+export type JournalEntry = {
   id: number
   createdAt: Date
   updatedAt: Date
@@ -39,8 +39,8 @@ export type journalentries = {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Journalentries
- * const journalentries = await prisma.journalentries.findMany()
+ * // Fetch zero or more JournalEntries
+ * const journalEntries = await prisma.journalEntry.findMany()
  * ```
  *
  * 
@@ -85,8 +85,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Journalentries
-   * const journalentries = await prisma.journalentries.findMany()
+   * // Fetch zero or more JournalEntries
+   * const journalEntries = await prisma.journalEntry.findMany()
    * ```
    *
    * 
@@ -173,14 +173,14 @@ export class PrismaClient<
   $transaction<P extends PrismaPromise<any>[]>(arg: [...P]): Promise<UnwrapTuple<P>>;
 
       /**
-   * `prisma.journalentries`: Exposes CRUD operations for the **journalentries** model.
+   * `prisma.journalEntry`: Exposes CRUD operations for the **JournalEntry** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Journalentries
-    * const journalentries = await prisma.journalentries.findMany()
+    * // Fetch zero or more JournalEntries
+    * const journalEntries = await prisma.journalEntry.findMany()
     * ```
     */
-  get journalentries(): Prisma.journalentriesDelegate<GlobalReject>;
+  get journalEntry(): Prisma.JournalEntryDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -595,7 +595,7 @@ export namespace Prisma {
   }
 
   export const ModelName: {
-    journalentries: 'journalentries'
+    JournalEntry: 'JournalEntry'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -757,19 +757,19 @@ export namespace Prisma {
    */
 
   /**
-   * Model journalentries
+   * Model JournalEntry
    */
 
 
-  export type AggregateJournalentries = {
-    _count: JournalentriesCountAggregateOutputType | null
-    _avg: JournalentriesAvgAggregateOutputType | null
-    _sum: JournalentriesSumAggregateOutputType | null
-    _min: JournalentriesMinAggregateOutputType | null
-    _max: JournalentriesMaxAggregateOutputType | null
+  export type AggregateJournalEntry = {
+    _count: JournalEntryCountAggregateOutputType | null
+    _avg: JournalEntryAvgAggregateOutputType | null
+    _sum: JournalEntrySumAggregateOutputType | null
+    _min: JournalEntryMinAggregateOutputType | null
+    _max: JournalEntryMaxAggregateOutputType | null
   }
 
-  export type JournalentriesAvgAggregateOutputType = {
+  export type JournalEntryAvgAggregateOutputType = {
     id: number | null
     exercise: number | null
     garlandPose: number | null
@@ -778,7 +778,7 @@ export namespace Prisma {
     waterIntake: number | null
   }
 
-  export type JournalentriesSumAggregateOutputType = {
+  export type JournalEntrySumAggregateOutputType = {
     id: number | null
     exercise: number | null
     garlandPose: number | null
@@ -787,22 +787,7 @@ export namespace Prisma {
     waterIntake: number | null
   }
 
-  export type JournalentriesMinAggregateOutputType = {
-    id: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    date: string | null
-    exercise: number | null
-    garlandPose: number | null
-    kegels: number | null
-    prenatalVitamins: boolean | null
-    probiotics: boolean | null
-    proteinIntake: number | null
-    userId: string | null
-    waterIntake: number | null
-  }
-
-  export type JournalentriesMaxAggregateOutputType = {
+  export type JournalEntryMinAggregateOutputType = {
     id: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -817,7 +802,22 @@ export namespace Prisma {
     waterIntake: number | null
   }
 
-  export type JournalentriesCountAggregateOutputType = {
+  export type JournalEntryMaxAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    date: string | null
+    exercise: number | null
+    garlandPose: number | null
+    kegels: number | null
+    prenatalVitamins: boolean | null
+    probiotics: boolean | null
+    proteinIntake: number | null
+    userId: string | null
+    waterIntake: number | null
+  }
+
+  export type JournalEntryCountAggregateOutputType = {
     id: number
     createdAt: number
     updatedAt: number
@@ -834,7 +834,7 @@ export namespace Prisma {
   }
 
 
-  export type JournalentriesAvgAggregateInputType = {
+  export type JournalEntryAvgAggregateInputType = {
     id?: true
     exercise?: true
     garlandPose?: true
@@ -843,7 +843,7 @@ export namespace Prisma {
     waterIntake?: true
   }
 
-  export type JournalentriesSumAggregateInputType = {
+  export type JournalEntrySumAggregateInputType = {
     id?: true
     exercise?: true
     garlandPose?: true
@@ -852,22 +852,7 @@ export namespace Prisma {
     waterIntake?: true
   }
 
-  export type JournalentriesMinAggregateInputType = {
-    id?: true
-    createdAt?: true
-    updatedAt?: true
-    date?: true
-    exercise?: true
-    garlandPose?: true
-    kegels?: true
-    prenatalVitamins?: true
-    probiotics?: true
-    proteinIntake?: true
-    userId?: true
-    waterIntake?: true
-  }
-
-  export type JournalentriesMaxAggregateInputType = {
+  export type JournalEntryMinAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
@@ -882,7 +867,22 @@ export namespace Prisma {
     waterIntake?: true
   }
 
-  export type JournalentriesCountAggregateInputType = {
+  export type JournalEntryMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    date?: true
+    exercise?: true
+    garlandPose?: true
+    kegels?: true
+    prenatalVitamins?: true
+    probiotics?: true
+    proteinIntake?: true
+    userId?: true
+    waterIntake?: true
+  }
+
+  export type JournalEntryCountAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
@@ -898,99 +898,99 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type JournalentriesAggregateArgs = {
+  export type JournalEntryAggregateArgs = {
     /**
-     * Filter which journalentries to aggregate.
+     * Filter which JournalEntry to aggregate.
      * 
     **/
-    where?: journalentriesWhereInput
+    where?: JournalEntryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of journalentries to fetch.
+     * Determine the order of JournalEntries to fetch.
      * 
     **/
-    orderBy?: Enumerable<journalentriesOrderByWithRelationInput>
+    orderBy?: Enumerable<JournalEntryOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      * 
     **/
-    cursor?: journalentriesWhereUniqueInput
+    cursor?: JournalEntryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` journalentries from the position of the cursor.
+     * Take `±n` JournalEntries from the position of the cursor.
      * 
     **/
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` journalentries.
+     * Skip the first `n` JournalEntries.
      * 
     **/
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned journalentries
+     * Count returned JournalEntries
     **/
-    _count?: true | JournalentriesCountAggregateInputType
+    _count?: true | JournalEntryCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: JournalentriesAvgAggregateInputType
+    _avg?: JournalEntryAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: JournalentriesSumAggregateInputType
+    _sum?: JournalEntrySumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: JournalentriesMinAggregateInputType
+    _min?: JournalEntryMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: JournalentriesMaxAggregateInputType
+    _max?: JournalEntryMaxAggregateInputType
   }
 
-  export type GetJournalentriesAggregateType<T extends JournalentriesAggregateArgs> = {
-        [P in keyof T & keyof AggregateJournalentries]: P extends '_count' | 'count'
+  export type GetJournalEntryAggregateType<T extends JournalEntryAggregateArgs> = {
+        [P in keyof T & keyof AggregateJournalEntry]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateJournalentries[P]>
-      : GetScalarType<T[P], AggregateJournalentries[P]>
+        : GetScalarType<T[P], AggregateJournalEntry[P]>
+      : GetScalarType<T[P], AggregateJournalEntry[P]>
   }
 
 
 
 
-  export type JournalentriesGroupByArgs = {
-    where?: journalentriesWhereInput
-    orderBy?: Enumerable<journalentriesOrderByWithAggregationInput>
-    by: Array<JournalentriesScalarFieldEnum>
-    having?: journalentriesScalarWhereWithAggregatesInput
+  export type JournalEntryGroupByArgs = {
+    where?: JournalEntryWhereInput
+    orderBy?: Enumerable<JournalEntryOrderByWithAggregationInput>
+    by: Array<JournalEntryScalarFieldEnum>
+    having?: JournalEntryScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: JournalentriesCountAggregateInputType | true
-    _avg?: JournalentriesAvgAggregateInputType
-    _sum?: JournalentriesSumAggregateInputType
-    _min?: JournalentriesMinAggregateInputType
-    _max?: JournalentriesMaxAggregateInputType
+    _count?: JournalEntryCountAggregateInputType | true
+    _avg?: JournalEntryAvgAggregateInputType
+    _sum?: JournalEntrySumAggregateInputType
+    _min?: JournalEntryMinAggregateInputType
+    _max?: JournalEntryMaxAggregateInputType
   }
 
 
-  export type JournalentriesGroupByOutputType = {
+  export type JournalEntryGroupByOutputType = {
     id: number
     createdAt: Date
     updatedAt: Date
@@ -1003,28 +1003,28 @@ export namespace Prisma {
     proteinIntake: number
     userId: string
     waterIntake: number
-    _count: JournalentriesCountAggregateOutputType | null
-    _avg: JournalentriesAvgAggregateOutputType | null
-    _sum: JournalentriesSumAggregateOutputType | null
-    _min: JournalentriesMinAggregateOutputType | null
-    _max: JournalentriesMaxAggregateOutputType | null
+    _count: JournalEntryCountAggregateOutputType | null
+    _avg: JournalEntryAvgAggregateOutputType | null
+    _sum: JournalEntrySumAggregateOutputType | null
+    _min: JournalEntryMinAggregateOutputType | null
+    _max: JournalEntryMaxAggregateOutputType | null
   }
 
-  type GetJournalentriesGroupByPayload<T extends JournalentriesGroupByArgs> = PrismaPromise<
+  type GetJournalEntryGroupByPayload<T extends JournalEntryGroupByArgs> = PrismaPromise<
     Array<
-      PickArray<JournalentriesGroupByOutputType, T['by']> &
+      PickArray<JournalEntryGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof JournalentriesGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof JournalEntryGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], JournalentriesGroupByOutputType[P]>
-            : GetScalarType<T[P], JournalentriesGroupByOutputType[P]>
+              : GetScalarType<T[P], JournalEntryGroupByOutputType[P]>
+            : GetScalarType<T[P], JournalEntryGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type journalentriesSelect = {
+  export type JournalEntrySelect = {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1039,138 +1039,138 @@ export namespace Prisma {
     waterIntake?: boolean
   }
 
-  export type journalentriesGetPayload<
-    S extends boolean | null | undefined | journalentriesArgs,
+  export type JournalEntryGetPayload<
+    S extends boolean | null | undefined | JournalEntryArgs,
     U = keyof S
       > = S extends true
-        ? journalentries
+        ? JournalEntry
     : S extends undefined
     ? never
-    : S extends journalentriesArgs | journalentriesFindManyArgs
+    : S extends JournalEntryArgs | JournalEntryFindManyArgs
     ?'include' extends U
-    ? journalentries 
+    ? JournalEntry 
     : 'select' extends U
     ? {
     [P in TrueKeys<S['select']>]:
-    P extends keyof journalentries ? journalentries[P] : never
+    P extends keyof JournalEntry ? JournalEntry[P] : never
   } 
-    : journalentries
-  : journalentries
+    : JournalEntry
+  : JournalEntry
 
 
-  type journalentriesCountArgs = Merge<
-    Omit<journalentriesFindManyArgs, 'select' | 'include'> & {
-      select?: JournalentriesCountAggregateInputType | true
+  type JournalEntryCountArgs = Merge<
+    Omit<JournalEntryFindManyArgs, 'select' | 'include'> & {
+      select?: JournalEntryCountAggregateInputType | true
     }
   >
 
-  export interface journalentriesDelegate<GlobalRejectSettings> {
+  export interface JournalEntryDelegate<GlobalRejectSettings> {
     /**
-     * Find zero or one Journalentries that matches the filter.
-     * @param {journalentriesFindUniqueArgs} args - Arguments to find a Journalentries
+     * Find zero or one JournalEntry that matches the filter.
+     * @param {JournalEntryFindUniqueArgs} args - Arguments to find a JournalEntry
      * @example
-     * // Get one Journalentries
-     * const journalentries = await prisma.journalentries.findUnique({
+     * // Get one JournalEntry
+     * const journalEntry = await prisma.journalEntry.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends journalentriesFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, journalentriesFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'journalentries'> extends True ? CheckSelect<T, Prisma__journalentriesClient<journalentries>, Prisma__journalentriesClient<journalentriesGetPayload<T>>> : CheckSelect<T, Prisma__journalentriesClient<journalentries | null >, Prisma__journalentriesClient<journalentriesGetPayload<T> | null >>
+    findUnique<T extends JournalEntryFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, JournalEntryFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'JournalEntry'> extends True ? CheckSelect<T, Prisma__JournalEntryClient<JournalEntry>, Prisma__JournalEntryClient<JournalEntryGetPayload<T>>> : CheckSelect<T, Prisma__JournalEntryClient<JournalEntry | null >, Prisma__JournalEntryClient<JournalEntryGetPayload<T> | null >>
 
     /**
-     * Find the first Journalentries that matches the filter.
+     * Find the first JournalEntry that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {journalentriesFindFirstArgs} args - Arguments to find a Journalentries
+     * @param {JournalEntryFindFirstArgs} args - Arguments to find a JournalEntry
      * @example
-     * // Get one Journalentries
-     * const journalentries = await prisma.journalentries.findFirst({
+     * // Get one JournalEntry
+     * const journalEntry = await prisma.journalEntry.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends journalentriesFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, journalentriesFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'journalentries'> extends True ? CheckSelect<T, Prisma__journalentriesClient<journalentries>, Prisma__journalentriesClient<journalentriesGetPayload<T>>> : CheckSelect<T, Prisma__journalentriesClient<journalentries | null >, Prisma__journalentriesClient<journalentriesGetPayload<T> | null >>
+    findFirst<T extends JournalEntryFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, JournalEntryFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'JournalEntry'> extends True ? CheckSelect<T, Prisma__JournalEntryClient<JournalEntry>, Prisma__JournalEntryClient<JournalEntryGetPayload<T>>> : CheckSelect<T, Prisma__JournalEntryClient<JournalEntry | null >, Prisma__JournalEntryClient<JournalEntryGetPayload<T> | null >>
 
     /**
-     * Find zero or more Journalentries that matches the filter.
+     * Find zero or more JournalEntries that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {journalentriesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {JournalEntryFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Journalentries
-     * const journalentries = await prisma.journalentries.findMany()
+     * // Get all JournalEntries
+     * const journalEntries = await prisma.journalEntry.findMany()
      * 
-     * // Get first 10 Journalentries
-     * const journalentries = await prisma.journalentries.findMany({ take: 10 })
+     * // Get first 10 JournalEntries
+     * const journalEntries = await prisma.journalEntry.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const journalentriesWithIdOnly = await prisma.journalentries.findMany({ select: { id: true } })
+     * const journalEntryWithIdOnly = await prisma.journalEntry.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends journalentriesFindManyArgs>(
-      args?: SelectSubset<T, journalentriesFindManyArgs>
-    ): CheckSelect<T, PrismaPromise<Array<journalentries>>, PrismaPromise<Array<journalentriesGetPayload<T>>>>
+    findMany<T extends JournalEntryFindManyArgs>(
+      args?: SelectSubset<T, JournalEntryFindManyArgs>
+    ): CheckSelect<T, PrismaPromise<Array<JournalEntry>>, PrismaPromise<Array<JournalEntryGetPayload<T>>>>
 
     /**
-     * Create a Journalentries.
-     * @param {journalentriesCreateArgs} args - Arguments to create a Journalentries.
+     * Create a JournalEntry.
+     * @param {JournalEntryCreateArgs} args - Arguments to create a JournalEntry.
      * @example
-     * // Create one Journalentries
-     * const Journalentries = await prisma.journalentries.create({
+     * // Create one JournalEntry
+     * const JournalEntry = await prisma.journalEntry.create({
      *   data: {
-     *     // ... data to create a Journalentries
+     *     // ... data to create a JournalEntry
      *   }
      * })
      * 
     **/
-    create<T extends journalentriesCreateArgs>(
-      args: SelectSubset<T, journalentriesCreateArgs>
-    ): CheckSelect<T, Prisma__journalentriesClient<journalentries>, Prisma__journalentriesClient<journalentriesGetPayload<T>>>
+    create<T extends JournalEntryCreateArgs>(
+      args: SelectSubset<T, JournalEntryCreateArgs>
+    ): CheckSelect<T, Prisma__JournalEntryClient<JournalEntry>, Prisma__JournalEntryClient<JournalEntryGetPayload<T>>>
 
     /**
-     * Create many Journalentries.
-     *     @param {journalentriesCreateManyArgs} args - Arguments to create many Journalentries.
+     * Create many JournalEntries.
+     *     @param {JournalEntryCreateManyArgs} args - Arguments to create many JournalEntries.
      *     @example
-     *     // Create many Journalentries
-     *     const journalentries = await prisma.journalentries.createMany({
+     *     // Create many JournalEntries
+     *     const journalEntry = await prisma.journalEntry.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends journalentriesCreateManyArgs>(
-      args?: SelectSubset<T, journalentriesCreateManyArgs>
+    createMany<T extends JournalEntryCreateManyArgs>(
+      args?: SelectSubset<T, JournalEntryCreateManyArgs>
     ): PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Journalentries.
-     * @param {journalentriesDeleteArgs} args - Arguments to delete one Journalentries.
+     * Delete a JournalEntry.
+     * @param {JournalEntryDeleteArgs} args - Arguments to delete one JournalEntry.
      * @example
-     * // Delete one Journalentries
-     * const Journalentries = await prisma.journalentries.delete({
+     * // Delete one JournalEntry
+     * const JournalEntry = await prisma.journalEntry.delete({
      *   where: {
-     *     // ... filter to delete one Journalentries
+     *     // ... filter to delete one JournalEntry
      *   }
      * })
      * 
     **/
-    delete<T extends journalentriesDeleteArgs>(
-      args: SelectSubset<T, journalentriesDeleteArgs>
-    ): CheckSelect<T, Prisma__journalentriesClient<journalentries>, Prisma__journalentriesClient<journalentriesGetPayload<T>>>
+    delete<T extends JournalEntryDeleteArgs>(
+      args: SelectSubset<T, JournalEntryDeleteArgs>
+    ): CheckSelect<T, Prisma__JournalEntryClient<JournalEntry>, Prisma__JournalEntryClient<JournalEntryGetPayload<T>>>
 
     /**
-     * Update one Journalentries.
-     * @param {journalentriesUpdateArgs} args - Arguments to update one Journalentries.
+     * Update one JournalEntry.
+     * @param {JournalEntryUpdateArgs} args - Arguments to update one JournalEntry.
      * @example
-     * // Update one Journalentries
-     * const journalentries = await prisma.journalentries.update({
+     * // Update one JournalEntry
+     * const journalEntry = await prisma.journalEntry.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1180,34 +1180,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends journalentriesUpdateArgs>(
-      args: SelectSubset<T, journalentriesUpdateArgs>
-    ): CheckSelect<T, Prisma__journalentriesClient<journalentries>, Prisma__journalentriesClient<journalentriesGetPayload<T>>>
+    update<T extends JournalEntryUpdateArgs>(
+      args: SelectSubset<T, JournalEntryUpdateArgs>
+    ): CheckSelect<T, Prisma__JournalEntryClient<JournalEntry>, Prisma__JournalEntryClient<JournalEntryGetPayload<T>>>
 
     /**
-     * Delete zero or more Journalentries.
-     * @param {journalentriesDeleteManyArgs} args - Arguments to filter Journalentries to delete.
+     * Delete zero or more JournalEntries.
+     * @param {JournalEntryDeleteManyArgs} args - Arguments to filter JournalEntries to delete.
      * @example
-     * // Delete a few Journalentries
-     * const { count } = await prisma.journalentries.deleteMany({
+     * // Delete a few JournalEntries
+     * const { count } = await prisma.journalEntry.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends journalentriesDeleteManyArgs>(
-      args?: SelectSubset<T, journalentriesDeleteManyArgs>
+    deleteMany<T extends JournalEntryDeleteManyArgs>(
+      args?: SelectSubset<T, JournalEntryDeleteManyArgs>
     ): PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Journalentries.
+     * Update zero or more JournalEntries.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {journalentriesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {JournalEntryUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Journalentries
-     * const journalentries = await prisma.journalentries.updateMany({
+     * // Update many JournalEntries
+     * const journalEntry = await prisma.journalEntry.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1217,59 +1217,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends journalentriesUpdateManyArgs>(
-      args: SelectSubset<T, journalentriesUpdateManyArgs>
+    updateMany<T extends JournalEntryUpdateManyArgs>(
+      args: SelectSubset<T, JournalEntryUpdateManyArgs>
     ): PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Journalentries.
-     * @param {journalentriesUpsertArgs} args - Arguments to update or create a Journalentries.
+     * Create or update one JournalEntry.
+     * @param {JournalEntryUpsertArgs} args - Arguments to update or create a JournalEntry.
      * @example
-     * // Update or create a Journalentries
-     * const journalentries = await prisma.journalentries.upsert({
+     * // Update or create a JournalEntry
+     * const journalEntry = await prisma.journalEntry.upsert({
      *   create: {
-     *     // ... data to create a Journalentries
+     *     // ... data to create a JournalEntry
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Journalentries we want to update
+     *     // ... the filter for the JournalEntry we want to update
      *   }
      * })
     **/
-    upsert<T extends journalentriesUpsertArgs>(
-      args: SelectSubset<T, journalentriesUpsertArgs>
-    ): CheckSelect<T, Prisma__journalentriesClient<journalentries>, Prisma__journalentriesClient<journalentriesGetPayload<T>>>
+    upsert<T extends JournalEntryUpsertArgs>(
+      args: SelectSubset<T, JournalEntryUpsertArgs>
+    ): CheckSelect<T, Prisma__JournalEntryClient<JournalEntry>, Prisma__JournalEntryClient<JournalEntryGetPayload<T>>>
 
     /**
-     * Count the number of Journalentries.
+     * Count the number of JournalEntries.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {journalentriesCountArgs} args - Arguments to filter Journalentries to count.
+     * @param {JournalEntryCountArgs} args - Arguments to filter JournalEntries to count.
      * @example
-     * // Count the number of Journalentries
-     * const count = await prisma.journalentries.count({
+     * // Count the number of JournalEntries
+     * const count = await prisma.journalEntry.count({
      *   where: {
-     *     // ... the filter for the Journalentries we want to count
+     *     // ... the filter for the JournalEntries we want to count
      *   }
      * })
     **/
-    count<T extends journalentriesCountArgs>(
-      args?: Subset<T, journalentriesCountArgs>,
+    count<T extends JournalEntryCountArgs>(
+      args?: Subset<T, JournalEntryCountArgs>,
     ): PrismaPromise<
       T extends _Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], JournalentriesCountAggregateOutputType>
+          : GetScalarType<T['select'], JournalEntryCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Journalentries.
+     * Allows you to perform aggregations operations on a JournalEntry.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {JournalentriesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {JournalEntryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1289,13 +1289,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends JournalentriesAggregateArgs>(args: Subset<T, JournalentriesAggregateArgs>): PrismaPromise<GetJournalentriesAggregateType<T>>
+    aggregate<T extends JournalEntryAggregateArgs>(args: Subset<T, JournalEntryAggregateArgs>): PrismaPromise<GetJournalEntryAggregateType<T>>
 
     /**
-     * Group by Journalentries.
+     * Group by JournalEntry.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {JournalentriesGroupByArgs} args - Group by arguments.
+     * @param {JournalEntryGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1310,14 +1310,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends JournalentriesGroupByArgs,
+      T extends JournalEntryGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: JournalentriesGroupByArgs['orderBy'] }
-        : { orderBy?: JournalentriesGroupByArgs['orderBy'] },
+        ? { orderBy: JournalEntryGroupByArgs['orderBy'] }
+        : { orderBy?: JournalEntryGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends TupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1366,16 +1366,16 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, JournalentriesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJournalentriesGroupByPayload<T> : PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, JournalEntryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJournalEntryGroupByPayload<T> : PrismaPromise<InputErrors>
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for journalentries.
+   * The delegate class that acts as a "Promise-like" for JournalEntry.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__journalentriesClient<T> implements PrismaPromise<T> {
+  export class Prisma__JournalEntryClient<T> implements PrismaPromise<T> {
     [prisma]: true;
     private readonly _dmmf;
     private readonly _fetcher;
@@ -1419,264 +1419,264 @@ export namespace Prisma {
   // Custom InputTypes
 
   /**
-   * journalentries findUnique
+   * JournalEntry findUnique
    */
-  export type journalentriesFindUniqueArgs = {
+  export type JournalEntryFindUniqueArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * Throw an Error if a journalentries can't be found
+     * Throw an Error if a JournalEntry can't be found
      * 
     **/
     rejectOnNotFound?: RejectOnNotFound
     /**
-     * Filter, which journalentries to fetch.
+     * Filter, which JournalEntry to fetch.
      * 
     **/
-    where: journalentriesWhereUniqueInput
+    where: JournalEntryWhereUniqueInput
   }
 
 
   /**
-   * journalentries findFirst
+   * JournalEntry findFirst
    */
-  export type journalentriesFindFirstArgs = {
+  export type JournalEntryFindFirstArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * Throw an Error if a journalentries can't be found
+     * Throw an Error if a JournalEntry can't be found
      * 
     **/
     rejectOnNotFound?: RejectOnNotFound
     /**
-     * Filter, which journalentries to fetch.
+     * Filter, which JournalEntry to fetch.
      * 
     **/
-    where?: journalentriesWhereInput
+    where?: JournalEntryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of journalentries to fetch.
+     * Determine the order of JournalEntries to fetch.
      * 
     **/
-    orderBy?: Enumerable<journalentriesOrderByWithRelationInput>
+    orderBy?: Enumerable<JournalEntryOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for journalentries.
+     * Sets the position for searching for JournalEntries.
      * 
     **/
-    cursor?: journalentriesWhereUniqueInput
+    cursor?: JournalEntryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` journalentries from the position of the cursor.
+     * Take `±n` JournalEntries from the position of the cursor.
      * 
     **/
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` journalentries.
+     * Skip the first `n` JournalEntries.
      * 
     **/
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of journalentries.
+     * Filter by unique combinations of JournalEntries.
      * 
     **/
-    distinct?: Enumerable<JournalentriesScalarFieldEnum>
+    distinct?: Enumerable<JournalEntryScalarFieldEnum>
   }
 
 
   /**
-   * journalentries findMany
+   * JournalEntry findMany
    */
-  export type journalentriesFindManyArgs = {
+  export type JournalEntryFindManyArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * Filter, which journalentries to fetch.
+     * Filter, which JournalEntries to fetch.
      * 
     **/
-    where?: journalentriesWhereInput
+    where?: JournalEntryWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of journalentries to fetch.
+     * Determine the order of JournalEntries to fetch.
      * 
     **/
-    orderBy?: Enumerable<journalentriesOrderByWithRelationInput>
+    orderBy?: Enumerable<JournalEntryOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing journalentries.
+     * Sets the position for listing JournalEntries.
      * 
     **/
-    cursor?: journalentriesWhereUniqueInput
+    cursor?: JournalEntryWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` journalentries from the position of the cursor.
+     * Take `±n` JournalEntries from the position of the cursor.
      * 
     **/
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` journalentries.
+     * Skip the first `n` JournalEntries.
      * 
     **/
     skip?: number
-    distinct?: Enumerable<JournalentriesScalarFieldEnum>
+    distinct?: Enumerable<JournalEntryScalarFieldEnum>
   }
 
 
   /**
-   * journalentries create
+   * JournalEntry create
    */
-  export type journalentriesCreateArgs = {
+  export type JournalEntryCreateArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * The data needed to create a journalentries.
+     * The data needed to create a JournalEntry.
      * 
     **/
-    data: XOR<journalentriesCreateInput, journalentriesUncheckedCreateInput>
+    data: XOR<JournalEntryCreateInput, JournalEntryUncheckedCreateInput>
   }
 
 
   /**
-   * journalentries createMany
+   * JournalEntry createMany
    */
-  export type journalentriesCreateManyArgs = {
+  export type JournalEntryCreateManyArgs = {
     /**
-     * The data used to create many journalentries.
+     * The data used to create many JournalEntries.
      * 
     **/
-    data: Enumerable<journalentriesCreateManyInput>
+    data: Enumerable<JournalEntryCreateManyInput>
     skipDuplicates?: boolean
   }
 
 
   /**
-   * journalentries update
+   * JournalEntry update
    */
-  export type journalentriesUpdateArgs = {
+  export type JournalEntryUpdateArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * The data needed to update a journalentries.
+     * The data needed to update a JournalEntry.
      * 
     **/
-    data: XOR<journalentriesUpdateInput, journalentriesUncheckedUpdateInput>
+    data: XOR<JournalEntryUpdateInput, JournalEntryUncheckedUpdateInput>
     /**
-     * Choose, which journalentries to update.
+     * Choose, which JournalEntry to update.
      * 
     **/
-    where: journalentriesWhereUniqueInput
+    where: JournalEntryWhereUniqueInput
   }
 
 
   /**
-   * journalentries updateMany
+   * JournalEntry updateMany
    */
-  export type journalentriesUpdateManyArgs = {
+  export type JournalEntryUpdateManyArgs = {
     /**
-     * The data used to update journalentries.
+     * The data used to update JournalEntries.
      * 
     **/
-    data: XOR<journalentriesUpdateManyMutationInput, journalentriesUncheckedUpdateManyInput>
+    data: XOR<JournalEntryUpdateManyMutationInput, JournalEntryUncheckedUpdateManyInput>
     /**
-     * Filter which journalentries to update
+     * Filter which JournalEntries to update
      * 
     **/
-    where?: journalentriesWhereInput
+    where?: JournalEntryWhereInput
   }
 
 
   /**
-   * journalentries upsert
+   * JournalEntry upsert
    */
-  export type journalentriesUpsertArgs = {
+  export type JournalEntryUpsertArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * The filter to search for the journalentries to update in case it exists.
+     * The filter to search for the JournalEntry to update in case it exists.
      * 
     **/
-    where: journalentriesWhereUniqueInput
+    where: JournalEntryWhereUniqueInput
     /**
-     * In case the journalentries found by the `where` argument doesn't exist, create a new journalentries with this data.
+     * In case the JournalEntry found by the `where` argument doesn't exist, create a new JournalEntry with this data.
      * 
     **/
-    create: XOR<journalentriesCreateInput, journalentriesUncheckedCreateInput>
+    create: XOR<JournalEntryCreateInput, JournalEntryUncheckedCreateInput>
     /**
-     * In case the journalentries was found with the provided `where` argument, update it with this data.
+     * In case the JournalEntry was found with the provided `where` argument, update it with this data.
      * 
     **/
-    update: XOR<journalentriesUpdateInput, journalentriesUncheckedUpdateInput>
+    update: XOR<JournalEntryUpdateInput, JournalEntryUncheckedUpdateInput>
   }
 
 
   /**
-   * journalentries delete
+   * JournalEntry delete
    */
-  export type journalentriesDeleteArgs = {
+  export type JournalEntryDeleteArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
     /**
-     * Filter which journalentries to delete.
+     * Filter which JournalEntry to delete.
      * 
     **/
-    where: journalentriesWhereUniqueInput
+    where: JournalEntryWhereUniqueInput
   }
 
 
   /**
-   * journalentries deleteMany
+   * JournalEntry deleteMany
    */
-  export type journalentriesDeleteManyArgs = {
+  export type JournalEntryDeleteManyArgs = {
     /**
-     * Filter which journalentries to delete
+     * Filter which JournalEntries to delete
      * 
     **/
-    where?: journalentriesWhereInput
+    where?: JournalEntryWhereInput
   }
 
 
   /**
-   * journalentries without action
+   * JournalEntry without action
    */
-  export type journalentriesArgs = {
+  export type JournalEntryArgs = {
     /**
-     * Select specific fields to fetch from the journalentries
+     * Select specific fields to fetch from the JournalEntry
      * 
     **/
-    select?: journalentriesSelect | null
+    select?: JournalEntrySelect | null
   }
 
 
@@ -1688,7 +1688,7 @@ export namespace Prisma {
   // Based on
   // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
 
-  export const JournalentriesScalarFieldEnum: {
+  export const JournalEntryScalarFieldEnum: {
     id: 'id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -1703,7 +1703,7 @@ export namespace Prisma {
     waterIntake: 'waterIntake'
   };
 
-  export type JournalentriesScalarFieldEnum = (typeof JournalentriesScalarFieldEnum)[keyof typeof JournalentriesScalarFieldEnum]
+  export type JournalEntryScalarFieldEnum = (typeof JournalEntryScalarFieldEnum)[keyof typeof JournalEntryScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1727,10 +1727,10 @@ export namespace Prisma {
    */
 
 
-  export type journalentriesWhereInput = {
-    AND?: Enumerable<journalentriesWhereInput>
-    OR?: Enumerable<journalentriesWhereInput>
-    NOT?: Enumerable<journalentriesWhereInput>
+  export type JournalEntryWhereInput = {
+    AND?: Enumerable<JournalEntryWhereInput>
+    OR?: Enumerable<JournalEntryWhereInput>
+    NOT?: Enumerable<JournalEntryWhereInput>
     id?: IntFilter | number
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
@@ -1745,7 +1745,7 @@ export namespace Prisma {
     waterIntake?: IntFilter | number
   }
 
-  export type journalentriesOrderByWithRelationInput = {
+  export type JournalEntryOrderByWithRelationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -1760,11 +1760,11 @@ export namespace Prisma {
     waterIntake?: SortOrder
   }
 
-  export type journalentriesWhereUniqueInput = {
+  export type JournalEntryWhereUniqueInput = {
     id?: number
   }
 
-  export type journalentriesOrderByWithAggregationInput = {
+  export type JournalEntryOrderByWithAggregationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -1777,17 +1777,17 @@ export namespace Prisma {
     proteinIntake?: SortOrder
     userId?: SortOrder
     waterIntake?: SortOrder
-    _count?: journalentriesCountOrderByAggregateInput
-    _avg?: journalentriesAvgOrderByAggregateInput
-    _max?: journalentriesMaxOrderByAggregateInput
-    _min?: journalentriesMinOrderByAggregateInput
-    _sum?: journalentriesSumOrderByAggregateInput
+    _count?: JournalEntryCountOrderByAggregateInput
+    _avg?: JournalEntryAvgOrderByAggregateInput
+    _max?: JournalEntryMaxOrderByAggregateInput
+    _min?: JournalEntryMinOrderByAggregateInput
+    _sum?: JournalEntrySumOrderByAggregateInput
   }
 
-  export type journalentriesScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<journalentriesScalarWhereWithAggregatesInput>
-    OR?: Enumerable<journalentriesScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<journalentriesScalarWhereWithAggregatesInput>
+  export type JournalEntryScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<JournalEntryScalarWhereWithAggregatesInput>
+    OR?: Enumerable<JournalEntryScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<JournalEntryScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     createdAt?: DateTimeWithAggregatesFilter | Date | string
     updatedAt?: DateTimeWithAggregatesFilter | Date | string
@@ -1802,7 +1802,7 @@ export namespace Prisma {
     waterIntake?: IntWithAggregatesFilter | number
   }
 
-  export type journalentriesCreateInput = {
+  export type JournalEntryCreateInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     date: string
@@ -1816,7 +1816,7 @@ export namespace Prisma {
     waterIntake: number
   }
 
-  export type journalentriesUncheckedCreateInput = {
+  export type JournalEntryUncheckedCreateInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -1831,7 +1831,7 @@ export namespace Prisma {
     waterIntake: number
   }
 
-  export type journalentriesUpdateInput = {
+  export type JournalEntryUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     date?: StringFieldUpdateOperationsInput | string
@@ -1845,7 +1845,7 @@ export namespace Prisma {
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
-  export type journalentriesUncheckedUpdateInput = {
+  export type JournalEntryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -1860,7 +1860,7 @@ export namespace Prisma {
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
-  export type journalentriesCreateManyInput = {
+  export type JournalEntryCreateManyInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -1875,7 +1875,7 @@ export namespace Prisma {
     waterIntake: number
   }
 
-  export type journalentriesUpdateManyMutationInput = {
+  export type JournalEntryUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     date?: StringFieldUpdateOperationsInput | string
@@ -1889,7 +1889,7 @@ export namespace Prisma {
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
-  export type journalentriesUncheckedUpdateManyInput = {
+  export type JournalEntryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -1946,7 +1946,7 @@ export namespace Prisma {
     not?: NestedBoolFilter | boolean
   }
 
-  export type journalentriesCountOrderByAggregateInput = {
+  export type JournalEntryCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -1961,7 +1961,7 @@ export namespace Prisma {
     waterIntake?: SortOrder
   }
 
-  export type journalentriesAvgOrderByAggregateInput = {
+  export type JournalEntryAvgOrderByAggregateInput = {
     id?: SortOrder
     exercise?: SortOrder
     garlandPose?: SortOrder
@@ -1970,22 +1970,7 @@ export namespace Prisma {
     waterIntake?: SortOrder
   }
 
-  export type journalentriesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    date?: SortOrder
-    exercise?: SortOrder
-    garlandPose?: SortOrder
-    kegels?: SortOrder
-    prenatalVitamins?: SortOrder
-    probiotics?: SortOrder
-    proteinIntake?: SortOrder
-    userId?: SortOrder
-    waterIntake?: SortOrder
-  }
-
-  export type journalentriesMinOrderByAggregateInput = {
+  export type JournalEntryMaxOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -2000,7 +1985,22 @@ export namespace Prisma {
     waterIntake?: SortOrder
   }
 
-  export type journalentriesSumOrderByAggregateInput = {
+  export type JournalEntryMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    date?: SortOrder
+    exercise?: SortOrder
+    garlandPose?: SortOrder
+    kegels?: SortOrder
+    prenatalVitamins?: SortOrder
+    probiotics?: SortOrder
+    proteinIntake?: SortOrder
+    userId?: SortOrder
+    waterIntake?: SortOrder
+  }
+
+  export type JournalEntrySumOrderByAggregateInput = {
     id?: SortOrder
     exercise?: SortOrder
     garlandPose?: SortOrder

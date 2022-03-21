@@ -11,7 +11,7 @@ async function main() {
   // Connect the client
   await prisma.$connect()
 
-  // await prisma.journalentries.create({
+  // await prisma.journalEntry.create({
   //   data: {
   //     date: "2022-03-08T19:58:57.000Z",
   //     exercise: 2,
@@ -25,7 +25,7 @@ async function main() {
   //   }
   // })
   // ... you will write your Prisma Client queries here
-  const allEntries = await prisma.journalentries.findMany()
+  const allEntries = await prisma.journalEntry.findMany()
   console.log(allEntries)
   // const app = express();
   // const PORT = 5432;
