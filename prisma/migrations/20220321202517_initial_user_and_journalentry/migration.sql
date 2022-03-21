@@ -1,11 +1,15 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "displayName" TEXT,
+    "firstName" TEXT,
+    "lastName" TEXT,
+    "email" TEXT,
 
-  - You are about to drop the `journalentries` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "journalentries";
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "JournalEntry" (
@@ -19,8 +23,11 @@ CREATE TABLE "JournalEntry" (
     "prenatalVitamins" BOOLEAN NOT NULL,
     "probiotics" BOOLEAN NOT NULL,
     "proteinIntake" INTEGER NOT NULL,
-    "userId" TEXT NOT NULL,
+    "authorId" TEXT NOT NULL,
     "waterIntake" INTEGER NOT NULL,
 
     CONSTRAINT "JournalEntry_pkey" PRIMARY KEY ("id")
 );
+
+-- AddForeignKey
+ALTER TABLE "JournalEntry" ADD CONSTRAINT "JournalEntry_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
