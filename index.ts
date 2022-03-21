@@ -1,15 +1,44 @@
 import "reflect-metadata";
 import { PrismaClient } from "./src/generated/prisma-client/index";
-// need to update this to point to a generated path
-// const express = require('express');
-// const graphql = require('graphql');
-// const { ApolloServer } = require('apollo-server-express');
+import { buildSchema } from "type-graphql";
+import { 
+  JournalEntryCrudResolver,
+  UserCrudResolver
+} from "./src/generated/type-graphql";
+import express from "express";
+import { ApolloServer } from "apollo-server-express";
+
+export interface ApolloContext {
+  expressContext: {
+    req: express.Request,
+    res: express.Response
+  };
+  prisma: PrismaClient;
+}
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const schema = await buildSchema({
+    resolvers: [
+      JournalEntryCrudResolver,
+      UserCrudResolver
+    ],
+    validate: false,
+  });
+   
   // Connect the client
   await prisma.$connect()
+
+  // await prisma.user.create({
+  //   data: {
+  //     id: "fV5De0bivMRqBoHxJuwT4UwFJtT2",
+  //     displayName: "luc mer",
+  //     firstName: "luc",
+  //     lastName: "mer",
+  //     email: "test@test.com",
+  //   }
+  // })
 
   // await prisma.journalEntry.create({
   //   data: {
@@ -24,22 +53,25 @@ async function main() {
   //     waterIntake: 2
   //   }
   // })
+
   // ... you will write your Prisma Client queries here
-  const allEntries = await prisma.journalEntry.findMany()
-  console.log(allEntries)
-  // const app = express();
-  // const PORT = 5432;
+  // const allusers = await prisma.user.findMany()
+  // console.log(allusers[0])
+  // const allEntries = await prisma.journalEntry.findMany()
+  // console.log(allEntries)
 
-  // const apollo = new ApolloServer({
+  const app = express();
+  const PORT = 9000;
+  const apollo = new ApolloServer({
+    schema,
+    context: ({ req, res }): ApolloContext => ({ expressContext: { req, res }, prisma })
+  })
 
-  // })
+  await apollo.start();
 
-  // await apollo.start();
+  apollo.applyMiddleware({ app });
 
-  // apollo.applyMiddleware({ app });
-
-  // app.listen(PORT, () => console.log("App listening on port 5000"));
-
+  app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}/graphql`));
 }
 
 main()

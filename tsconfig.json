@@ -1,12 +1,14 @@
 {
     "compilerOptions": {
       "sourceMap": true,
-      "outDir": "dist",
+      "outDir": "lib",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "moduleResolution": "node",
       "strict": true,
       "target": "ES2021",
       "lib": ["esnext"],
       "esModuleInterop": true
-    }
+    },
+    "include": ["src"]
 }
