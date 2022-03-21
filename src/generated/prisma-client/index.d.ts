@@ -41,7 +41,7 @@ export type JournalEntry = {
   prenatalVitamins: boolean
   probiotics: boolean
   proteinIntake: number
-  userId: string
+  authorId: string
   waterIntake: number
 }
 
@@ -1755,7 +1755,7 @@ export namespace Prisma {
     prenatalVitamins: boolean | null
     probiotics: boolean | null
     proteinIntake: number | null
-    userId: string | null
+    authorId: string | null
     waterIntake: number | null
   }
 
@@ -1770,7 +1770,7 @@ export namespace Prisma {
     prenatalVitamins: boolean | null
     probiotics: boolean | null
     proteinIntake: number | null
-    userId: string | null
+    authorId: string | null
     waterIntake: number | null
   }
 
@@ -1785,7 +1785,7 @@ export namespace Prisma {
     prenatalVitamins: number
     probiotics: number
     proteinIntake: number
-    userId: number
+    authorId: number
     waterIntake: number
     _all: number
   }
@@ -1820,7 +1820,7 @@ export namespace Prisma {
     prenatalVitamins?: true
     probiotics?: true
     proteinIntake?: true
-    userId?: true
+    authorId?: true
     waterIntake?: true
   }
 
@@ -1835,7 +1835,7 @@ export namespace Prisma {
     prenatalVitamins?: true
     probiotics?: true
     proteinIntake?: true
-    userId?: true
+    authorId?: true
     waterIntake?: true
   }
 
@@ -1850,7 +1850,7 @@ export namespace Prisma {
     prenatalVitamins?: true
     probiotics?: true
     proteinIntake?: true
-    userId?: true
+    authorId?: true
     waterIntake?: true
     _all?: true
   }
@@ -1958,7 +1958,7 @@ export namespace Prisma {
     prenatalVitamins: boolean
     probiotics: boolean
     proteinIntake: number
-    userId: string
+    authorId: string
     waterIntake: number
     _count: JournalEntryCountAggregateOutputType | null
     _avg: JournalEntryAvgAggregateOutputType | null
@@ -1992,13 +1992,13 @@ export namespace Prisma {
     prenatalVitamins?: boolean
     probiotics?: boolean
     proteinIntake?: boolean
-    userId?: boolean
-    user?: boolean | UserArgs
+    authorId?: boolean
+    author?: boolean | UserArgs
     waterIntake?: boolean
   }
 
   export type JournalEntryInclude = {
-    user?: boolean | UserArgs
+    author?: boolean | UserArgs
   }
 
   export type JournalEntryGetPayload<
@@ -2012,12 +2012,12 @@ export namespace Prisma {
     ?'include' extends U
     ? JournalEntry  & {
     [P in TrueKeys<S['include']>]:
-        P extends 'user' ? UserGetPayload<S['include'][P]> :  never
+        P extends 'author' ? UserGetPayload<S['include'][P]> :  never
   } 
     : 'select' extends U
     ? {
     [P in TrueKeys<S['select']>]:
-        P extends 'user' ? UserGetPayload<S['select'][P]> :  P extends keyof JournalEntry ? JournalEntry[P] : never
+        P extends 'author' ? UserGetPayload<S['select'][P]> :  P extends keyof JournalEntry ? JournalEntry[P] : never
   } 
     : JournalEntry
   : JournalEntry
@@ -2357,7 +2357,7 @@ export namespace Prisma {
     constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
     readonly [Symbol.toStringTag]: 'PrismaClientPromise';
 
-    user<T extends UserArgs = {}>(args?: Subset<T, UserArgs>): CheckSelect<T, Prisma__UserClient<User | null >, Prisma__UserClient<UserGetPayload<T> | null >>;
+    author<T extends UserArgs = {}>(args?: Subset<T, UserArgs>): CheckSelect<T, Prisma__UserClient<User | null >, Prisma__UserClient<UserGetPayload<T> | null >>;
 
     private get _document();
     /**
@@ -2718,7 +2718,7 @@ export namespace Prisma {
     prenatalVitamins: 'prenatalVitamins',
     probiotics: 'probiotics',
     proteinIntake: 'proteinIntake',
-    userId: 'userId',
+    authorId: 'authorId',
     waterIntake: 'waterIntake'
   };
 
@@ -2815,8 +2815,8 @@ export namespace Prisma {
     prenatalVitamins?: BoolFilter | boolean
     probiotics?: BoolFilter | boolean
     proteinIntake?: IntFilter | number
-    userId?: StringFilter | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    authorId?: StringFilter | string
+    author?: XOR<UserRelationFilter, UserWhereInput>
     waterIntake?: IntFilter | number
   }
 
@@ -2831,8 +2831,8 @@ export namespace Prisma {
     prenatalVitamins?: SortOrder
     probiotics?: SortOrder
     proteinIntake?: SortOrder
-    userId?: SortOrder
-    user?: UserOrderByWithRelationInput
+    authorId?: SortOrder
+    author?: UserOrderByWithRelationInput
     waterIntake?: SortOrder
   }
 
@@ -2851,7 +2851,7 @@ export namespace Prisma {
     prenatalVitamins?: SortOrder
     probiotics?: SortOrder
     proteinIntake?: SortOrder
-    userId?: SortOrder
+    authorId?: SortOrder
     waterIntake?: SortOrder
     _count?: JournalEntryCountOrderByAggregateInput
     _avg?: JournalEntryAvgOrderByAggregateInput
@@ -2874,7 +2874,7 @@ export namespace Prisma {
     prenatalVitamins?: BoolWithAggregatesFilter | boolean
     probiotics?: BoolWithAggregatesFilter | boolean
     proteinIntake?: IntWithAggregatesFilter | number
-    userId?: StringWithAggregatesFilter | string
+    authorId?: StringWithAggregatesFilter | string
     waterIntake?: IntWithAggregatesFilter | number
   }
 
@@ -2886,7 +2886,7 @@ export namespace Prisma {
     firstName?: string | null
     lastName?: string | null
     email?: string | null
-    journalEntries?: JournalEntryCreateNestedManyWithoutUserInput
+    journalEntries?: JournalEntryCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -2897,7 +2897,7 @@ export namespace Prisma {
     firstName?: string | null
     lastName?: string | null
     email?: string | null
-    journalEntries?: JournalEntryUncheckedCreateNestedManyWithoutUserInput
+    journalEntries?: JournalEntryUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
@@ -2908,7 +2908,7 @@ export namespace Prisma {
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    journalEntries?: JournalEntryUpdateManyWithoutUserInput
+    journalEntries?: JournalEntryUpdateManyWithoutAuthorInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2919,7 +2919,7 @@ export namespace Prisma {
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    journalEntries?: JournalEntryUncheckedUpdateManyWithoutUserInput
+    journalEntries?: JournalEntryUncheckedUpdateManyWithoutAuthorInput
   }
 
   export type UserCreateManyInput = {
@@ -2962,7 +2962,7 @@ export namespace Prisma {
     prenatalVitamins: boolean
     probiotics: boolean
     proteinIntake: number
-    user: UserCreateNestedOneWithoutJournalEntriesInput
+    author: UserCreateNestedOneWithoutJournalEntriesInput
     waterIntake: number
   }
 
@@ -2977,7 +2977,7 @@ export namespace Prisma {
     prenatalVitamins: boolean
     probiotics: boolean
     proteinIntake: number
-    userId: string
+    authorId: string
     waterIntake: number
   }
 
@@ -2991,7 +2991,7 @@ export namespace Prisma {
     prenatalVitamins?: BoolFieldUpdateOperationsInput | boolean
     probiotics?: BoolFieldUpdateOperationsInput | boolean
     proteinIntake?: IntFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutJournalEntriesInput
+    author?: UserUpdateOneRequiredWithoutJournalEntriesInput
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3006,7 +3006,7 @@ export namespace Prisma {
     prenatalVitamins?: BoolFieldUpdateOperationsInput | boolean
     probiotics?: BoolFieldUpdateOperationsInput | boolean
     proteinIntake?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3021,7 +3021,7 @@ export namespace Prisma {
     prenatalVitamins: boolean
     probiotics: boolean
     proteinIntake: number
-    userId: string
+    authorId: string
     waterIntake: number
   }
 
@@ -3049,7 +3049,7 @@ export namespace Prisma {
     prenatalVitamins?: BoolFieldUpdateOperationsInput | boolean
     probiotics?: BoolFieldUpdateOperationsInput | boolean
     proteinIntake?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3216,7 +3216,7 @@ export namespace Prisma {
     prenatalVitamins?: SortOrder
     probiotics?: SortOrder
     proteinIntake?: SortOrder
-    userId?: SortOrder
+    authorId?: SortOrder
     waterIntake?: SortOrder
   }
 
@@ -3240,7 +3240,7 @@ export namespace Prisma {
     prenatalVitamins?: SortOrder
     probiotics?: SortOrder
     proteinIntake?: SortOrder
-    userId?: SortOrder
+    authorId?: SortOrder
     waterIntake?: SortOrder
   }
 
@@ -3255,7 +3255,7 @@ export namespace Prisma {
     prenatalVitamins?: SortOrder
     probiotics?: SortOrder
     proteinIntake?: SortOrder
-    userId?: SortOrder
+    authorId?: SortOrder
     waterIntake?: SortOrder
   }
 
@@ -3292,17 +3292,17 @@ export namespace Prisma {
     _max?: NestedBoolFilter
   }
 
-  export type JournalEntryCreateNestedManyWithoutUserInput = {
-    create?: XOR<Enumerable<JournalEntryCreateWithoutUserInput>, Enumerable<JournalEntryUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutUserInput>
-    createMany?: JournalEntryCreateManyUserInputEnvelope
+  export type JournalEntryCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<Enumerable<JournalEntryCreateWithoutAuthorInput>, Enumerable<JournalEntryUncheckedCreateWithoutAuthorInput>>
+    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutAuthorInput>
+    createMany?: JournalEntryCreateManyAuthorInputEnvelope
     connect?: Enumerable<JournalEntryWhereUniqueInput>
   }
 
-  export type JournalEntryUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<Enumerable<JournalEntryCreateWithoutUserInput>, Enumerable<JournalEntryUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutUserInput>
-    createMany?: JournalEntryCreateManyUserInputEnvelope
+  export type JournalEntryUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<Enumerable<JournalEntryCreateWithoutAuthorInput>, Enumerable<JournalEntryUncheckedCreateWithoutAuthorInput>>
+    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutAuthorInput>
+    createMany?: JournalEntryCreateManyAuthorInputEnvelope
     connect?: Enumerable<JournalEntryWhereUniqueInput>
   }
 
@@ -3318,31 +3318,31 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type JournalEntryUpdateManyWithoutUserInput = {
-    create?: XOR<Enumerable<JournalEntryCreateWithoutUserInput>, Enumerable<JournalEntryUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutUserInput>
-    upsert?: Enumerable<JournalEntryUpsertWithWhereUniqueWithoutUserInput>
-    createMany?: JournalEntryCreateManyUserInputEnvelope
+  export type JournalEntryUpdateManyWithoutAuthorInput = {
+    create?: XOR<Enumerable<JournalEntryCreateWithoutAuthorInput>, Enumerable<JournalEntryUncheckedCreateWithoutAuthorInput>>
+    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutAuthorInput>
+    upsert?: Enumerable<JournalEntryUpsertWithWhereUniqueWithoutAuthorInput>
+    createMany?: JournalEntryCreateManyAuthorInputEnvelope
     set?: Enumerable<JournalEntryWhereUniqueInput>
     disconnect?: Enumerable<JournalEntryWhereUniqueInput>
     delete?: Enumerable<JournalEntryWhereUniqueInput>
     connect?: Enumerable<JournalEntryWhereUniqueInput>
-    update?: Enumerable<JournalEntryUpdateWithWhereUniqueWithoutUserInput>
-    updateMany?: Enumerable<JournalEntryUpdateManyWithWhereWithoutUserInput>
+    update?: Enumerable<JournalEntryUpdateWithWhereUniqueWithoutAuthorInput>
+    updateMany?: Enumerable<JournalEntryUpdateManyWithWhereWithoutAuthorInput>
     deleteMany?: Enumerable<JournalEntryScalarWhereInput>
   }
 
-  export type JournalEntryUncheckedUpdateManyWithoutUserInput = {
-    create?: XOR<Enumerable<JournalEntryCreateWithoutUserInput>, Enumerable<JournalEntryUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutUserInput>
-    upsert?: Enumerable<JournalEntryUpsertWithWhereUniqueWithoutUserInput>
-    createMany?: JournalEntryCreateManyUserInputEnvelope
+  export type JournalEntryUncheckedUpdateManyWithoutAuthorInput = {
+    create?: XOR<Enumerable<JournalEntryCreateWithoutAuthorInput>, Enumerable<JournalEntryUncheckedCreateWithoutAuthorInput>>
+    connectOrCreate?: Enumerable<JournalEntryCreateOrConnectWithoutAuthorInput>
+    upsert?: Enumerable<JournalEntryUpsertWithWhereUniqueWithoutAuthorInput>
+    createMany?: JournalEntryCreateManyAuthorInputEnvelope
     set?: Enumerable<JournalEntryWhereUniqueInput>
     disconnect?: Enumerable<JournalEntryWhereUniqueInput>
     delete?: Enumerable<JournalEntryWhereUniqueInput>
     connect?: Enumerable<JournalEntryWhereUniqueInput>
-    update?: Enumerable<JournalEntryUpdateWithWhereUniqueWithoutUserInput>
-    updateMany?: Enumerable<JournalEntryUpdateManyWithWhereWithoutUserInput>
+    update?: Enumerable<JournalEntryUpdateWithWhereUniqueWithoutAuthorInput>
+    updateMany?: Enumerable<JournalEntryUpdateManyWithWhereWithoutAuthorInput>
     deleteMany?: Enumerable<JournalEntryScalarWhereInput>
   }
 
@@ -3521,7 +3521,7 @@ export namespace Prisma {
     _max?: NestedBoolFilter
   }
 
-  export type JournalEntryCreateWithoutUserInput = {
+  export type JournalEntryCreateWithoutAuthorInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     date: string
@@ -3534,7 +3534,7 @@ export namespace Prisma {
     waterIntake: number
   }
 
-  export type JournalEntryUncheckedCreateWithoutUserInput = {
+  export type JournalEntryUncheckedCreateWithoutAuthorInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3548,28 +3548,28 @@ export namespace Prisma {
     waterIntake: number
   }
 
-  export type JournalEntryCreateOrConnectWithoutUserInput = {
+  export type JournalEntryCreateOrConnectWithoutAuthorInput = {
     where: JournalEntryWhereUniqueInput
-    create: XOR<JournalEntryCreateWithoutUserInput, JournalEntryUncheckedCreateWithoutUserInput>
+    create: XOR<JournalEntryCreateWithoutAuthorInput, JournalEntryUncheckedCreateWithoutAuthorInput>
   }
 
-  export type JournalEntryCreateManyUserInputEnvelope = {
-    data: Enumerable<JournalEntryCreateManyUserInput>
+  export type JournalEntryCreateManyAuthorInputEnvelope = {
+    data: Enumerable<JournalEntryCreateManyAuthorInput>
     skipDuplicates?: boolean
   }
 
-  export type JournalEntryUpsertWithWhereUniqueWithoutUserInput = {
+  export type JournalEntryUpsertWithWhereUniqueWithoutAuthorInput = {
     where: JournalEntryWhereUniqueInput
-    update: XOR<JournalEntryUpdateWithoutUserInput, JournalEntryUncheckedUpdateWithoutUserInput>
-    create: XOR<JournalEntryCreateWithoutUserInput, JournalEntryUncheckedCreateWithoutUserInput>
+    update: XOR<JournalEntryUpdateWithoutAuthorInput, JournalEntryUncheckedUpdateWithoutAuthorInput>
+    create: XOR<JournalEntryCreateWithoutAuthorInput, JournalEntryUncheckedCreateWithoutAuthorInput>
   }
 
-  export type JournalEntryUpdateWithWhereUniqueWithoutUserInput = {
+  export type JournalEntryUpdateWithWhereUniqueWithoutAuthorInput = {
     where: JournalEntryWhereUniqueInput
-    data: XOR<JournalEntryUpdateWithoutUserInput, JournalEntryUncheckedUpdateWithoutUserInput>
+    data: XOR<JournalEntryUpdateWithoutAuthorInput, JournalEntryUncheckedUpdateWithoutAuthorInput>
   }
 
-  export type JournalEntryUpdateManyWithWhereWithoutUserInput = {
+  export type JournalEntryUpdateManyWithWhereWithoutAuthorInput = {
     where: JournalEntryScalarWhereInput
     data: XOR<JournalEntryUpdateManyMutationInput, JournalEntryUncheckedUpdateManyWithoutJournalEntriesInput>
   }
@@ -3588,7 +3588,7 @@ export namespace Prisma {
     prenatalVitamins?: BoolFilter | boolean
     probiotics?: BoolFilter | boolean
     proteinIntake?: IntFilter | number
-    userId?: StringFilter | string
+    authorId?: StringFilter | string
     waterIntake?: IntFilter | number
   }
 
@@ -3642,7 +3642,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type JournalEntryCreateManyUserInput = {
+  export type JournalEntryCreateManyAuthorInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3656,7 +3656,7 @@ export namespace Prisma {
     waterIntake: number
   }
 
-  export type JournalEntryUpdateWithoutUserInput = {
+  export type JournalEntryUpdateWithoutAuthorInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     date?: StringFieldUpdateOperationsInput | string
@@ -3669,7 +3669,7 @@ export namespace Prisma {
     waterIntake?: IntFieldUpdateOperationsInput | number
   }
 
-  export type JournalEntryUncheckedUpdateWithoutUserInput = {
+  export type JournalEntryUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

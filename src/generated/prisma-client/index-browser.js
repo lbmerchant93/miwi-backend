@@ -97,7 +97,7 @@ exports.Prisma.JournalEntryScalarFieldEnum = makeEnum({
   prenatalVitamins: 'prenatalVitamins',
   probiotics: 'probiotics',
   proteinIntake: 'proteinIntake',
-  userId: 'userId',
+  authorId: 'authorId',
   waterIntake: 'waterIntake'
 });
 

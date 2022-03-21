@@ -3,7 +3,8 @@ import { PrismaClient } from "./src/generated/prisma-client/index";
 import { buildSchema } from "type-graphql";
 import { 
   JournalEntryCrudResolver,
-  UserCrudResolver
+  UserCrudResolver,
+  relationResolvers
 } from "./src/generated/type-graphql";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
@@ -22,7 +23,8 @@ async function main() {
   const schema = await buildSchema({
     resolvers: [
       JournalEntryCrudResolver,
-      UserCrudResolver
+      UserCrudResolver,
+      ...relationResolvers
     ],
     validate: false,
   });
@@ -49,8 +51,14 @@ async function main() {
   //     prenatalVitamins: true,
   //     probiotics: true,
   //     proteinIntake: 2,
-  //     userId: "fV5De0bivMRqBoHxJuwT4UwFJtT2",
+  //     authorId: "fV5De0bivMRqBoHxJuwT4UwFJtT2",
   //     waterIntake: 2
+  //   }
+  // })
+
+  // await prisma.journalEntry.delete({
+  //   where: {
+  //     id: 1
   //   }
   // })
 
