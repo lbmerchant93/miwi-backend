@@ -1,2 +1,6 @@
-node_modules
+node_modules/
+src/generated/type-graphql
+src/generated/prisma-client
+src/generated-schema.graphql
 .env
+*.env
