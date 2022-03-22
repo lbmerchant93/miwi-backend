@@ -8,6 +8,7 @@ import {
 } from "./src/generated/type-graphql";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
+import cors from "cors";
 
 export interface ApolloContext {
   expressContext: {
@@ -64,12 +65,15 @@ async function main() {
 
   // ... you will write your Prisma Client queries here
   // const allusers = await prisma.user.findMany()
-  // console.log(allusers[0])
+  // console.log(allusers)
   // const allEntries = await prisma.journalEntry.findMany()
   // console.log(allEntries)
 
   const app = express();
   const PORT = 9000;
+
+  app.use(cors());
+  
   const apollo = new ApolloServer({
     schema,
     context: ({ req, res }): ApolloContext => ({ expressContext: { req, res }, prisma })
