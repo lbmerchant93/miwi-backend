@@ -1,14 +1,15 @@
 import "reflect-metadata";
-import { PrismaClient } from "./src/generated/prisma-client/index";
+import { PrismaClient } from "./generated/prisma-client/index";
 import { buildSchema } from "type-graphql";
 import { 
   JournalEntryCrudResolver,
   UserCrudResolver,
   relationResolvers
-} from "./src/generated/type-graphql";
+} from "./generated/type-graphql";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
+import { JournalEntryOverrideResolver } from './views/graphql/journalEntryResolvers';
 
 export interface ApolloContext {
   expressContext: {
@@ -25,6 +26,7 @@ async function main() {
     resolvers: [
       JournalEntryCrudResolver,
       UserCrudResolver,
+      JournalEntryOverrideResolver,
       ...relationResolvers
     ],
     validate: false,
