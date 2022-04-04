@@ -1,6 +1,6 @@
 import * as TypeGraphQL from "type-graphql";
 import { GraphQLResolveInfo } from "graphql";
-import { JournalEntry } from "../../generated/type-graphql";
+import { JournalEntry, JournalEntryWhereUniqueInput } from "../../generated/type-graphql";
 import { getPrismaFromContext } from "../../generated/type-graphql/helpers";
 import { PrismaClient } from "../../generated/prisma-client";
 import { ApolloContext } from "../../index";
@@ -63,6 +63,17 @@ export class CustomCreateJournalEntryArgs {
     data!: JournalEntryCreateInputData;
 }
 
+@TypeGraphQL.ArgsType()
+export class CustomUpdateJournalEntryArgs {
+    @TypeGraphQL.Field(_type => JournalEntryCreateInputData, {
+        nullable: false,
+    })
+    data!: JournalEntryCreateInputData;
+
+    @TypeGraphQL.Field(_type => TypeGraphQL.Int)
+    id!: number;
+}
+
 @TypeGraphQL.Resolver(_of => JournalEntry)
 export class JournalEntryOverrideResolver {
     @TypeGraphQL.Mutation(returns => JournalEntry, { nullable: true })
@@ -90,5 +101,42 @@ export class JournalEntryOverrideResolver {
         });
 
         return journalEntry;
+    }
+
+    @TypeGraphQL.Mutation(returns => JournalEntry, { nullable: true })
+    async updateJournalEntry(
+        @TypeGraphQL.Ctx() ctx: ApolloContext,
+        @TypeGraphQL.Info() info: GraphQLResolveInfo,
+        @TypeGraphQL.Args() args: CustomUpdateJournalEntryArgs,
+    ): Promise<JournalEntry> {
+        const prisma: PrismaClient = getPrismaFromContext(ctx);
+
+        const journalEntry = await prisma.journalEntry.findUnique({
+            where: { id: args.id }
+        })
+
+        if (!journalEntry) 
+            throw new Error(
+                `Journal entry not found, unable to update.`
+            );
+
+        const existingJournalEntryDate = await prisma.journalEntry.findFirst({
+            where: {
+                authorId: args.data.authorId,
+                date: args.data.date
+            },
+        });
+
+        if (existingJournalEntryDate)
+            throw new Error(
+                "A journal entry for the given date already exists.",
+            );
+
+        let newJournalEntry = await prisma.journalEntry.update({
+            where: { id: args.id },
+            data: { ...args.data },
+        });
+
+        return newJournalEntry;
     }
 }
