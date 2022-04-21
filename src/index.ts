@@ -74,9 +74,9 @@ async function main() {
   const app = express();
   const PORT = process.env.PORT || 9000;
 
-  app.use(cors());
-  app.use(express.json());
-  app.use(express.urlencoded({extended: true}));
+  // app.use(cors());
+  // app.use(express.json());
+  // app.use(express.urlencoded({extended: true}));
   
   const apollo = new ApolloServer({
     schema,
@@ -85,7 +85,7 @@ async function main() {
 
   await apollo.start();
 
-  apollo.applyMiddleware({ app });
+  apollo.applyMiddleware({ app, cors: false });
 
   app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}/graphql`));
 }
