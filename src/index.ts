@@ -75,6 +75,7 @@ async function main() {
   const PORT = process.env.PORT || 9000;
 
   app.use(cors());
+  app.use(express.json());
   
   const apollo = new ApolloServer({
     schema,
