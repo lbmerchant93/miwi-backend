@@ -72,7 +72,7 @@ async function main() {
   // console.log(allEntries)
 
   const app = express();
-  const PORT = 9000;
+  const PORT = process.env.PORT || 9000;
 
   app.use(cors());
   
