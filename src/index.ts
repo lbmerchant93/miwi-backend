@@ -76,6 +76,7 @@ async function main() {
 
   app.use(cors());
   app.use(express.json());
+  app.use(express.urlencoded({extended: true}));
   
   const apollo = new ApolloServer({
     schema,
