@@ -6,8 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts",
-    "vercel-build": "prisma generate && prisma migrate deploy && start"
+    "dev": "nodemon src/index.ts"
   },
   "author": "",
   "license": "ISC",
