@@ -37,24 +37,24 @@ async function main() {
 
   // await prisma.user.create({
   //   data: {
-  //     id: "fV5De0bivMRqBoHxJuwT4UwFJtT2",
-  //     displayName: "luc mer",
-  //     firstName: "luc",
-  //     lastName: "mer",
-  //     email: "test@test.com",
+  //     id: "fV5De0bivMRqBoHxJuwT4UwFJtT245",
+  //     displayName: "lucas merch",
+  //     firstName: "lucas",
+  //     lastName: "merch",
+  //     email: "test2@test.com",
   //   }
   // })
 
   // await prisma.journalEntry.create({
   //   data: {
-  //     date: "2022-03-08T19:58:57.000Z",
+  //     date: "2022-03-09T19:58:57.000Z",
   //     exercise: 2,
   //     garlandPose: 2,
   //     kegels: 2,
   //     prenatalVitamins: true,
   //     probiotics: true,
   //     proteinIntake: 2,
-  //     authorId: "fV5De0bivMRqBoHxJuwT4UwFJtT2",
+  //     authorId: "fV5De0bivMRqBoHxJuwT4UwFJtT245",
   //     waterIntake: 2
   //   }
   // })
