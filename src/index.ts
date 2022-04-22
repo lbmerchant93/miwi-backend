@@ -17,7 +17,7 @@ export interface ApolloContext {
     res: express.Response
   };
   prisma: PrismaClient;
-}
+};
 
 const prisma = new PrismaClient();
 
