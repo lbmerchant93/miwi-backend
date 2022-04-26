@@ -127,7 +127,7 @@ export class JournalEntryOverrideResolver {
             },
         });
 
-        if (existingJournalEntryDate)
+        if (existingJournalEntryDate && existingJournalEntryDate.id !== args.id)
             throw new Error(
                 "A journal entry for the given date already exists.",
             );
