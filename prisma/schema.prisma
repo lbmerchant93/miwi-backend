@@ -21,6 +21,7 @@ model User {
   firstName         String?
   lastName          String?
   email             String?
+  expectedDueDate   String?     
   journalEntries    JournalEntry[]
 }
 
