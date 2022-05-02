@@ -18,10 +18,8 @@ model User {
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
   displayName       String?
-  firstName         String?
-  lastName          String?
-  email             String?
-  expectedDueDate   String?     
+  email             String      @unique
+  expectedDueDate   String?  
   journalEntries    JournalEntry[]
 }
 
