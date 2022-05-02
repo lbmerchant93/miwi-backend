@@ -9,7 +9,7 @@ import { ApolloContext } from "../../index";
     isAbstract: true
 })
 
-export class UserCreateInputData {
+export class UserLoginInputData {
     @TypeGraphQL.Field(_type => String, {
       nullable: false
     })
@@ -28,10 +28,10 @@ export class UserCreateInputData {
 
 @TypeGraphQL.ArgsType()
 export class CustomCreateUserArgs {
-    @TypeGraphQL.Field(_type => UserCreateInputData, {
+    @TypeGraphQL.Field(_type => UserLoginInputData, {
         nullable: false,
     })
-    data!: UserCreateInputData;
+    data!: UserLoginInputData;
 }
 
 @TypeGraphQL.Resolver(_of => User)
