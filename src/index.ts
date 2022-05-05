@@ -10,6 +10,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
 import { JournalEntryOverrideResolver } from './views/graphql/journalEntryResolvers';
+import { UserOverrideResolver } from "./views/graphql/userResolvers";
 
 export interface ApolloContext {
   expressContext: {
@@ -27,6 +28,7 @@ async function main() {
       JournalEntryCrudResolver,
       UserCrudResolver,
       JournalEntryOverrideResolver,
+      UserOverrideResolver,
       ...relationResolvers
     ],
     validate: false,

@@ -1,6 +1,6 @@
 import * as TypeGraphQL from "type-graphql";
 import { GraphQLResolveInfo } from "graphql";
-import { JournalEntry, JournalEntryWhereUniqueInput } from "../../generated/type-graphql";
+import { JournalEntry } from "../../generated/type-graphql";
 import { getPrismaFromContext } from "../../generated/type-graphql/helpers";
 import { PrismaClient } from "../../generated/prisma-client";
 import { ApolloContext } from "../../index";
@@ -127,7 +127,7 @@ export class JournalEntryOverrideResolver {
             },
         });
 
-        if (existingJournalEntryDate)
+        if (existingJournalEntryDate && existingJournalEntryDate.id !== args.id)
             throw new Error(
                 "A journal entry for the given date already exists.",
             );
