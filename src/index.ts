@@ -71,7 +71,7 @@ async function main() {
   // const allusers = await prisma.user.findMany()
   // console.log(allusers)
   // const allEntries = await prisma.journalEntry.findMany()
-  // console.log(allEntries)
+  //
 
   const app = express();
   const PORT = process.env.PORT || 9000;
@@ -83,7 +83,7 @@ async function main() {
   const apollo = new ApolloServer({
     schema,
     context: ({ req, res }): ApolloContext => ({ expressContext: { req, res }, prisma })
-  })
+  });
 
   await apollo.start();
 
