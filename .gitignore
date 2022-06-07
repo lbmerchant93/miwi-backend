@@ -4,3 +4,4 @@ src/generated/prisma-client
 src/generated-schema.graphql
 .env
 *.env
+firebase.topsecret.json
