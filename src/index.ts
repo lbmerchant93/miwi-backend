@@ -48,7 +48,6 @@ async function main() {
       ...relationResolvers
     ],
     authChecker: ({ root, args, context, info}) => {
-      // console.log(context.expressContext.req.userId, 'userId')
       if(!context.expressContext.req.userId) {
         return false;
       } 
