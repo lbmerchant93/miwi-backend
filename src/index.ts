@@ -1,7 +1,9 @@
 import "reflect-metadata";
 import { PrismaClient } from "./generated/prisma-client/index";
-import { buildSchema } from "type-graphql";
+import { Authorized, buildSchema } from "type-graphql";
 import { 
+  applyResolversEnhanceMap,
+  ResolversEnhanceMap,
   JournalEntryCrudResolver,
   UserCrudResolver,
   relationResolvers
@@ -11,6 +13,7 @@ import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
 import { JournalEntryOverrideResolver } from './views/graphql/journalEntryResolvers';
 import { UserOverrideResolver } from "./views/graphql/userResolvers";
+import { expressAuthnMiddleware } from './authn';
 
 export interface ApolloContext {
   expressContext: {
@@ -23,6 +26,19 @@ export interface ApolloContext {
 const prisma = new PrismaClient();
 
 async function main() {
+  const forceEntityAuth = <T extends keyof ResolversEnhanceMap>(entity: T) => ({
+    [`create${entity}`]: [Authorized()],
+    [`createMany${entity}`]: [Authorized()],
+    [`delete${entity}`]: [Authorized()],
+    [`deleteMany${entity}`]: [Authorized()],
+    [`update${entity}`]: [Authorized()],
+    [`updateMany${entity}`]: [Authorized()],
+    [`upsert${entity}`]: [Authorized()],
+  });
+  applyResolversEnhanceMap({
+    User: forceEntityAuth("User"),
+    JournalEntry: forceEntityAuth("JournalEntry"),
+});
   const schema = await buildSchema({
     resolvers: [
       JournalEntryCrudResolver,
@@ -31,6 +47,13 @@ async function main() {
       UserOverrideResolver,
       ...relationResolvers
     ],
+    authChecker: ({ root, args, context, info}) => {
+      // console.log(context.expressContext.req.userId, 'userId')
+      if(!context.expressContext.req.userId) {
+        return false;
+      } 
+      return true;
+    },
     validate: false,
   });
    
@@ -79,9 +102,11 @@ async function main() {
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
+  app.use(expressAuthnMiddleware);
   
   const apollo = new ApolloServer({
     schema,
+    // I think this part is what needs to change
     context: ({ req, res }): ApolloContext => ({ expressContext: { req, res }, prisma })
   });
 

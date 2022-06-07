@@ -76,6 +76,7 @@ export class CustomUpdateJournalEntryArgs {
 
 @TypeGraphQL.Resolver(_of => JournalEntry)
 export class JournalEntryOverrideResolver {
+    @TypeGraphQL.Authorized()
     @TypeGraphQL.Mutation(returns => JournalEntry, { nullable: true })
     async createJournalEntry(
         @TypeGraphQL.Ctx() ctx: ApolloContext,
@@ -83,7 +84,6 @@ export class JournalEntryOverrideResolver {
         @TypeGraphQL.Args() args: CustomCreateJournalEntryArgs,
     ): Promise<JournalEntry> {
         const prisma: PrismaClient = getPrismaFromContext(ctx);
-
         const existingJournalEntry = await prisma.journalEntry.findFirst({
             where: {
                 authorId: args.data.authorId,
@@ -103,6 +103,7 @@ export class JournalEntryOverrideResolver {
         return journalEntry;
     }
 
+    @TypeGraphQL.Authorized()
     @TypeGraphQL.Mutation(returns => JournalEntry, { nullable: true })
     async updateJournalEntry(
         @TypeGraphQL.Ctx() ctx: ApolloContext,
