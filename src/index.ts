@@ -60,42 +60,6 @@ async function main() {
   // Connect the client
   await prisma.$connect()
 
-  // await prisma.user.create({
-  //   data: {
-  //     id: "fV5De0bivMRqBoHxJuwT4UwFJtT245",
-  //     displayName: "lucas merch",
-  //     firstName: "lucas",
-  //     lastName: "merch",
-  //     email: "test2@test.com",
-  //   }
-  // })
-
-  // await prisma.journalEntry.create({
-  //   data: {
-  //     date: "2022-03-09T19:58:57.000Z",
-  //     exercise: 2,
-  //     garlandPose: 2,
-  //     kegels: 2,
-  //     prenatalVitamins: true,
-  //     probiotics: true,
-  //     proteinIntake: 2,
-  //     authorId: "fV5De0bivMRqBoHxJuwT4UwFJtT245",
-  //     waterIntake: 2
-  //   }
-  // })
-
-  // await prisma.journalEntry.delete({
-  //   where: {
-  //     id: 1
-  //   }
-  // })
-
-  // ... you will write your Prisma Client queries here
-  // const allusers = await prisma.user.findMany()
-  // console.log(allusers)
-  // const allEntries = await prisma.journalEntry.findMany()
-  //
-
   const app = express();
   const PORT = process.env.PORT || 9000;
 
@@ -106,7 +70,6 @@ async function main() {
   
   const apollo = new ApolloServer({
     schema,
-    // I think this part is what needs to change
     context: ({ req, res }): ApolloContext => ({ expressContext: { req, res }, prisma })
   });
 
