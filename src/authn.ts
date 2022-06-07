@@ -7,16 +7,14 @@ admin.initializeApp({
 
 export const expressAuthnMiddleware = async (req: any, res: any, next: any) => {
     const authzHeader = await req.headers.authorization;
-    // console.log(authzHeader, 'authzHeader')
 
     if (!authzHeader) {
         req.userId = "";
-        // console.log('authzHeader')
         return next();
     }
 
     if (!authzHeader.startsWith("Bearer ")) {
-        // throw new Error("Invalid Authorization Header.");
+        req.userId = "";
         return next();
     }
 
