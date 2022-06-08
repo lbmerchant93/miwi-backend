@@ -63,7 +63,7 @@ async function main() {
   const PORT = process.env.PORT || 9000;
 
   const corsOptions = {
-    origin: '*'
+    origin: 'https://miwi-frontend.vercel.app'
   }
   app.use(cors(corsOptions));
   app.use(express.json());
