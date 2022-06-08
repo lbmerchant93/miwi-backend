@@ -62,11 +62,7 @@ async function main() {
   const app = express();
   const PORT = process.env.PORT || 9000;
 
-  // app.use(cors());
-  const corsOptions = {
-    origin: 'https://miwi-frontend.vercel.app',
-    credentials: true
-  }
+  app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
   app.use(expressAuthnMiddleware);
@@ -78,7 +74,7 @@ async function main() {
 
   await apollo.start();
 
-  apollo.applyMiddleware({ app, cors: corsOptions });
+  apollo.applyMiddleware({ app });
 
   app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}/graphql`));
 }
