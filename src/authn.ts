@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
-const serviceAccount = require("/Users/lucasmerchant/Downloads/miwi-e12ee-firebase-adminsdk-27a3b-1209aa44ac.json");
+
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.applicationDefault(),
     databaseURL: `https://miwi-e12ee-default-rtdb.firebaseio.com`
 });
 
