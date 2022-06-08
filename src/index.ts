@@ -62,7 +62,10 @@ async function main() {
   const app = express();
   const PORT = process.env.PORT || 9000;
 
-  app.use(cors());
+  const corsOptions = {
+    origin: '*'
+  }
+  app.use(cors(corsOptions));
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
   app.use(expressAuthnMiddleware);
