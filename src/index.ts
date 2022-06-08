@@ -74,7 +74,7 @@ async function main() {
 
   await apollo.start();
 
-  apollo.applyMiddleware({ app });
+  apollo.applyMiddleware({ app, cors: false });
 
   app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}/graphql`));
 }
