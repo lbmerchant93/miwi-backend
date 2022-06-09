@@ -1,7 +1,11 @@
 import * as admin from "firebase-admin";
+require("dotenv").config();
+
+const serviceAccount = process.env.GOOGLE_CREDS;
+if (!serviceAccount) throw new Error('The $GOOGLE_CREDS environment variable was not found!');
 
 admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
+    credential: admin.credential.cert(JSON.parse(serviceAccount)),
     databaseURL: `https://miwi-e12ee-default-rtdb.firebaseio.com`
 });
 
