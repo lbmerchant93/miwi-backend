@@ -3,5 +3,5 @@ src/generated/type-graphql
 src/generated/prisma-client
 src/generated-schema.graphql
 .env
-secret/
+
 *.env
