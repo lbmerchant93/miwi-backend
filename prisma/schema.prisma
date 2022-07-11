@@ -21,6 +21,7 @@ model User {
   email             String      @unique
   expectedDueDate   String?  
   journalEntries    JournalEntry[]
+  goals             Goals[]
 }
 
 model JournalEntry {
@@ -37,4 +38,17 @@ model JournalEntry {
   authorId          String
   author            User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
   waterIntake       Int
+}
+
+model Goals {
+  id                Int         @id @default(autoincrement())
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  userId            String
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  waterIntakeGoal   Int?
+  proteinIntakeGoal Int?
+  exerciseGoal      Int?
+  kegelsGoal        Int?
+  gardlandPoseGoal  Int?
 }

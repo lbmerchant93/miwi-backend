@@ -6,6 +6,7 @@ import {
   ResolversEnhanceMap,
   JournalEntryCrudResolver,
   UserCrudResolver,
+  GoalsCrudResolver,
   relationResolvers
 } from "./generated/type-graphql";
 import express from "express";
@@ -43,6 +44,7 @@ async function main() {
     resolvers: [
       JournalEntryCrudResolver,
       UserCrudResolver,
+      GoalsCrudResolver,
       JournalEntryOverrideResolver,
       UserOverrideResolver,
       ...relationResolvers
