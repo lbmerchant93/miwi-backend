@@ -55,7 +55,20 @@ export class UserOverrideResolver {
         return !existingUser 
             ? prisma.user.create({
                 data: {
-                    id, displayName, email
+                    id, 
+                    displayName, 
+                    email, 
+                    goals: { 
+                        create: [ 
+                            { 
+                                waterIntakeGoal: null, 
+                                proteinIntakeGoal: null, 
+                                exerciseGoal: null, 
+                                kegelsGoal: null, 
+                                gardlandPoseGoal: null 
+                            } 
+                        ]
+                    }
                 }
             })
             : existingUser
