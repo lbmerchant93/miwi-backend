@@ -65,7 +65,7 @@ export class UserOverrideResolver {
                                 proteinIntakeGoal: null, 
                                 exerciseGoal: null, 
                                 kegelsGoal: null, 
-                                gardlandPoseGoal: null 
+                                garlandPoseGoal: null 
                             } 
                         ]
                     }
