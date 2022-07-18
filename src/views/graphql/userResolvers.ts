@@ -50,24 +50,48 @@ export class UserOverrideResolver {
                 id: id,
                 email: email
             },
+            include: {
+                goals: true
+            }
         });
-
+        
+        if (existingUser && existingUser.goals === null) {
+            const updateUser = await prisma.user.update({
+                where: {
+                    id: id
+                },
+                data: {
+                    goals: {
+                        create: {
+                            waterIntakeGoal: 0,
+                            proteinIntakeGoal: 0,
+                            exerciseGoal: 0,
+                            kegelsGoal: 0,
+                            garlandPoseGoal: 0
+                        }
+                    }
+                },
+                include: {
+                    goals: true
+                }
+            })
+            return updateUser
+        }
+        
         return !existingUser 
-            ? prisma.user.create({
+            ? await prisma.user.create({
                 data: {
                     id, 
                     displayName, 
                     email, 
                     goals: { 
-                        create: [ 
-                            { 
-                                waterIntakeGoal: null, 
-                                proteinIntakeGoal: null, 
-                                exerciseGoal: null, 
-                                kegelsGoal: null, 
-                                garlandPoseGoal: null 
-                            } 
-                        ]
+                        create: { 
+                            waterIntakeGoal: null, 
+                            proteinIntakeGoal: null, 
+                            exerciseGoal: null, 
+                            kegelsGoal: null, 
+                            garlandPoseGoal: null 
+                        } 
                     }
                 }
             })
