@@ -14,41 +14,46 @@ generator typegraphql {
 }
 
 model User {
-  id                String      @id // can't be autoincrement, user id comes from firebase uid
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
-  displayName       String?
-  email             String      @unique
-  expectedDueDate   String?  
-  journalEntries    JournalEntry[]
-  goals             Goal?
+  id                    String      @id // can't be autoincrement, user id comes from firebase uid
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  displayName           String?
+  email                 String      @unique
+  expectedDueDate       String?  
+  journalEntries        JournalEntry[]
+  goals                 Goal?
 }
 
 model JournalEntry {
-  id                Int         @id @default(autoincrement())
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
-  date              String
-  exercise          Int
-  garlandPose       Int
-  kegels            Int
-  prenatalVitamins  Boolean
-  probiotics        Boolean
-  proteinIntake     Int
-  authorId          String
-  author            User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  waterIntake       Int
+  id                    Int         @id @default(autoincrement())
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  date                  String
+  exercise              Int
+  garlandPose           Int
+  kegels                Int
+  prenatalVitamins      Boolean
+  probiotics            Boolean
+  proteinIntake         Int
+  authorId              String
+  author                User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  waterIntake           Int
+  mood                  String?
+  childbirthEducation   String?
+  selfCare              String?
+  postpartumPrep        String?
+  fetalLoveBreak        String?
 }
 
 model Goal {
-  id                Int         @id @default(autoincrement())
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
-  userId            String      @unique
-  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  waterIntakeGoal   Int?
-  proteinIntakeGoal Int?
-  exerciseGoal      Int?
-  kegelsGoal        Int?
-  garlandPoseGoal   Int?
+  id                    Int         @id @default(autoincrement())
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  userId                String      @unique
+  user                  User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  waterIntakeGoal       Int?
+  proteinIntakeGoal     Int?
+  exerciseGoal          Int?
+  kegelsGoal            Int?
+  garlandPoseGoal       Int?
 }
