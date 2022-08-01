@@ -53,6 +53,31 @@ export class JournalEntryCreateInputData {
     nullable: false
     })
     waterIntake!: number;
+
+    @TypeGraphQL.Field(_type => String, {
+    nullable: false
+    })
+    mood!: string;
+
+    @TypeGraphQL.Field(_type => String, {
+    nullable: false
+    })
+    childbirthEducation!: string;
+
+    @TypeGraphQL.Field(_type => String, {
+    nullable: false
+    })
+    selfCare!: string;
+
+    @TypeGraphQL.Field(_type => String, {
+    nullable: false
+    })
+    postpartumPrep!: string;
+
+    @TypeGraphQL.Field(_type => String, {
+    nullable: false
+    })
+    fetalLoveBreak!: string;
 }
 
 @TypeGraphQL.ArgsType()
