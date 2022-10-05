@@ -63,11 +63,11 @@ export class UserOverrideResolver {
                 data: {
                     goals: {
                         create: {
-                            waterIntakeGoal: 0,
-                            proteinIntakeGoal: 0,
-                            exerciseGoal: 0,
-                            kegelsGoal: 0,
-                            garlandPoseGoal: 0
+                            waterIntakeGoal: 70,
+                            proteinIntakeGoal: 70,
+                            exerciseGoal: 30,
+                            kegelsGoal: 100,
+                            garlandPoseGoal: 10
                         }
                     }
                 },
@@ -86,11 +86,11 @@ export class UserOverrideResolver {
                     email, 
                     goals: { 
                         create: { 
-                            waterIntakeGoal: null, 
-                            proteinIntakeGoal: null, 
-                            exerciseGoal: null, 
-                            kegelsGoal: null, 
-                            garlandPoseGoal: null 
+                            waterIntakeGoal: 70, 
+                            proteinIntakeGoal: 70, 
+                            exerciseGoal: 30, 
+                            kegelsGoal: 100, 
+                            garlandPoseGoal: 10 
                         } 
                     }
                 }
