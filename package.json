@@ -21,6 +21,7 @@
     "firebase-admin": "^10.2.0",
     "graphql": "^15.5.0",
     "graphql-fields": "^2.0.3",
+    "graphql-scalars": "^1.20.0",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
