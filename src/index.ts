@@ -15,6 +15,7 @@ import cors from "cors";
 import { JournalEntryOverrideResolver } from './views/graphql/journalEntryResolvers';
 import { UserOverrideResolver } from "./views/graphql/userResolvers";
 import { expressAuthnMiddleware } from './authn';
+var cron = require('node-cron');
 
 export interface ApolloContext {
   expressContext: {
@@ -79,6 +80,9 @@ async function main() {
   apollo.applyMiddleware({ app, cors: false });
 
   app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}/graphql`));
+  cron.schedule('*/14 * * * *', () => {
+    console.log('running a task every minute');
+  });
 }
 
 main()
