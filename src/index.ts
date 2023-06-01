@@ -81,7 +81,7 @@ async function main() {
 
   app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}/graphql`));
   cron.schedule('*/14 * * * *', () => {
-    console.log('running a task every minute');
+    console.log('running a task every 14 minutes');
   });
 }
 
