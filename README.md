@@ -8,7 +8,7 @@ This project is designed as a prototype for a midwifery application. The project
 
 ### Stack
 
-**Build**: TypeScript, GraphQL, Express, Prisma, Firebase, Apollo-Server-Express, 
+**Build**: TypeScript, GraphQL, Express, Prisma, Firebase, Apollo-Server-Express
 
 **Deployment**: Render
 
@@ -29,10 +29,10 @@ The App has been deployed using Render. To visit, click the link below!
 ## Features
 
 ### Prisma:
-A TypeScript ORM used to help app read and write data to the database in an intuitive and safe way. Generates resolvers used for querying data. Can create addition resolvers that manipulate the generated CRUD resolvers. 
+A TypeScript ORM used to help app read and write data to the database in an intuitive and safe way. Generates resolvers used for querying data. Can create additional resolvers that manipulate the generated CRUD resolvers. 
 
 ### PostgreSQL:
-An object relational database system. Created with Heroku add on to create database.
+An object relational database system.
 
 ### GraphQL:
 Language used for querying data.
